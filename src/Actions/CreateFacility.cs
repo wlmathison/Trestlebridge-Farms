@@ -35,6 +35,7 @@ namespace Trestlebridge.Actions
                     Console.WriteLine("A new duck house has been created!");
                     break;
                 default:
+                    Console.WriteLine($"Invalid option: {input}");
                     break;
             }
         }
