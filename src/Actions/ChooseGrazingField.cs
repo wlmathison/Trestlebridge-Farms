@@ -23,9 +23,16 @@ namespace Trestlebridge.Actions
             Console.WriteLine($"Place {animal.Type.ToLower()} where?");
 
             Console.Write("> ");
-            int choice = Int32.Parse(Console.ReadLine());
+            int choice = Int32.Parse(Console.ReadLine()) - 1;
 
-            farm.GrazingFields[choice].AddResource(animal);
+            if (farm.GrazingFields[choice].Animals.Count < farm.GrazingFields[choice].Capacity)
+            {
+                farm.GrazingFields[choice].AddResource(animal);
+            }
+
+            Console.WriteLine($"Selected grazing field is full. Please try again.");
+
+
 
             /*
                 Couldn't get this to work. Can you?
