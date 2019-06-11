@@ -48,6 +48,7 @@ namespace Trestlebridge.Actions
                     ChooseDuckHouse.CollectInput(farm, new Duck());
                     break;
                 default:
+                    Console.WriteLine($"Invalid option: {choice}");
                     break;
             }
         }
