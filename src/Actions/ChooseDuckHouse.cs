@@ -12,9 +12,14 @@ namespace Trestlebridge.Actions
         {
             // Console.Clear();
 
+            int j = 0;
             for (int i = 0; i < farm.DuckHouses.Count; i++)
             {
-                Console.WriteLine($"{i + 1}. Duck House ({farm.DuckHouses[i].Animals.Count} animals)");
+                if (farm.DuckHouses[i].Animals.Count < farm.DuckHouses[i].Capacity)
+                {
+                    Console.WriteLine($"{j + 1}. Duck House ({farm.DuckHouses[i].Animals.Count} animals)");
+                    j++;
+                }
             }
 
             Console.WriteLine();
@@ -23,16 +28,19 @@ namespace Trestlebridge.Actions
             Console.WriteLine($"Place {animal.Type.ToLower()} where?");
 
             Console.Write("> ");
-            int choice = Int32.Parse(Console.ReadLine()) - 1;
+            int choice = Int32.Parse(Console.ReadLine());
 
-            if (farm.DuckHouses[choice].Animals.Count < farm.DuckHouses[choice].Capacity)
+            try
             {
-                farm.DuckHouses[choice].AddResource(animal);
+                if (farm.DuckHouses[choice - 1].Animals.Count < farm.DuckHouses[choice - 1].Capacity)
+                {
+                    farm.DuckHouses[choice - 1].AddResource(animal);
+                }
             }
-
-            Console.WriteLine($"Selected duck house is full. Please try again.");
-
-
+            catch (ArgumentOutOfRangeException)
+            {
+                Console.WriteLine($"{choice} is not a valid option");
+            }
 
             /*
                 Couldn't get this to work. Can you?
