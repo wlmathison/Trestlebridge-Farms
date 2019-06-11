@@ -14,12 +14,12 @@ namespace Trestlebridge.Models.Animals {
             }
         }
 
-        public double GrassPerDay { get; set; } = 4.1;
+        public double FeedPerDay { get; set; } = 4.1;
         public string Type { get; } = "Goat";
 
         // Methods
         public void Graze () {
-            Console.WriteLine($"Goat {this._shortId} just ate {this.GrassPerDay}kg of grass");
+            Console.WriteLine($"Goat {this._shortId} just ate {this.FeedPerDay}kg of grass");
         }
 
         public double Butcher () {

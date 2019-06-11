@@ -18,13 +18,13 @@ namespace Trestlebridge.Models.Animals
             }
         }
 
-        public double GrassPerDay { get; set; } = 2.3;
+        public double FeedPerDay { get; set; } = 2.3;
         public string Type { get; } = "Ostrich";
 
         // Methods
         public void Graze()
         {
-            Console.WriteLine($"Ostrich {this._shortId} just ate {this.GrassPerDay}kg of grass");
+            Console.WriteLine($"Ostrich {this._shortId} just ate {this.FeedPerDay}kg of feed");
         }
 
         public double Butcher()
