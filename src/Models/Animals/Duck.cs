@@ -4,12 +4,12 @@ using Trestlebridge.Interfaces;
 
 namespace Trestlebridge.Models.Animals
 {
-    public class Ostrich : IResource, IGrazing, IMeatProducing
+    public class Duck : IResource
     {
 
         private Guid _id = Guid.NewGuid();
-        private double _meatProduced = 2.6;
-        private int _eggsProduced = 3;
+        private int _eggsProduced = 6;
+        private double _feathersProduced = 0.75;
 
         private string _shortId
         {
@@ -19,23 +19,18 @@ namespace Trestlebridge.Models.Animals
             }
         }
 
-        public double FeedPerDay { get; set; } = 2.3;
-        public string Type { get; } = "Ostrich";
+        public double FeedPerDay { get; set; } = 0.8;
+        public string Type { get; } = "Duck";
 
         // Methods
         public void Graze()
         {
-            Console.WriteLine($"Ostrich {this._shortId} just ate {this.FeedPerDay}kg of feed");
-        }
-
-        public double Butcher()
-        {
-            return _meatProduced;
+            Console.WriteLine($"Duck {this._shortId} just ate {this.FeedPerDay}kg of feed");
         }
 
         public override string ToString()
         {
-            return $"Ostrich {this._shortId}. Squack!";
+            return $"Duck {this._shortId}. Quack!";
         }
     }
 }
