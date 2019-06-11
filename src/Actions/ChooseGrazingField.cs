@@ -12,9 +12,14 @@ namespace Trestlebridge.Actions
         {
             // Console.Clear();
 
+            int j = 0;
             for (int i = 0; i < farm.GrazingFields.Count; i++)
             {
-                Console.WriteLine($"{i + 1}. Grazing Field ({farm.GrazingFields[i].Animals.Count} animals)");
+                if (farm.GrazingFields[i].Animals.Count < farm.GrazingFields[i].Capacity)
+                {
+                    Console.WriteLine($"{j + 1}. Grazing Field ({farm.GrazingFields[i].Animals.Count} animals)");
+                    j++;
+                }
             }
 
             Console.WriteLine();
@@ -23,14 +28,19 @@ namespace Trestlebridge.Actions
             Console.WriteLine($"Place {animal.Type.ToLower()} where?");
 
             Console.Write("> ");
-            int choice = Int32.Parse(Console.ReadLine()) - 1;
+            int choice = Int32.Parse(Console.ReadLine());
 
-            if (farm.GrazingFields[choice].Animals.Count < farm.GrazingFields[choice].Capacity)
+            try
             {
-                farm.GrazingFields[choice].AddResource(animal);
+                if (farm.GrazingFields[choice - 1].Animals.Count < farm.GrazingFields[choice - 1].Capacity)
+                {
+                    farm.GrazingFields[choice - 1].AddResource(animal);
+                }
             }
-
-            Console.WriteLine($"Selected grazing field is full. Please try again.");
+            catch (ArgumentOutOfRangeException)
+            {
+                Console.WriteLine($"{choice} is not a valid option");
+            }
 
 
 
