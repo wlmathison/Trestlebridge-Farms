@@ -17,7 +17,7 @@ namespace Trestlebridge.Actions
             {
                 if (farm.ChickenHouses[i].Animals.Count < farm.ChickenHouses[i].Capacity)
                 {
-                    Console.WriteLine($"{j + 1}. Chicken House ({farm.ChickenHouses[i].Animals.Count} animals)");
+                    Console.WriteLine($"{j + 1}. Chicken House ({farm.ChickenHouses[i].Animals.Count} chickens)");
                     j++;
                 }
             }

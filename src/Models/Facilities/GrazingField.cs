@@ -12,6 +12,26 @@ namespace Trestlebridge.Models.Facilities
         private Guid _id = Guid.NewGuid();
 
         private List<IGrazing> _animals = new List<IGrazing>();
+        public int Cows()
+        {
+            return _animals.FindAll(anml => anml.Type == "Cow").Count;
+        }
+        public int Pigs()
+        {
+            return _animals.FindAll(anml => anml.Type == "Pig").Count;
+        }
+        public int Goats()
+        {
+            return _animals.FindAll(anml => anml.Type == "Goat").Count;
+        }
+        public int Ostriches()
+        {
+            return _animals.FindAll(anml => anml.Type == "Ostrich").Count;
+        }
+        public int Sheep()
+        {
+            return _animals.FindAll(anml => anml.Type == "Sheep").Count;
+        }
 
         public double Capacity
         {

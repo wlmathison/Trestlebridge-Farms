@@ -1,8 +1,10 @@
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using Trestlebridge.Interfaces;
 using Trestlebridge.Models;
 using Trestlebridge.Models.Animals;
+using Trestlebridge.Models.Facilities;
 
 namespace Trestlebridge.Actions
 {
@@ -11,15 +13,19 @@ namespace Trestlebridge.Actions
         public static void CollectInput(Farm farm, IGrazing animal)
         {
             // Console.Clear();
+            List<GrazingField> OpenGrazingFields = new List<GrazingField>();
 
-            int j = 0;
-            for (int i = 0; i < farm.GrazingFields.Count; i++)
+            foreach (GrazingField grazingField in farm.GrazingFields)
             {
-                if (farm.GrazingFields[i].Animals.Count < farm.GrazingFields[i].Capacity)
+                if (grazingField.Animals.Count < grazingField.Capacity)
                 {
-                    Console.WriteLine($"{j + 1}. Grazing Field ({farm.GrazingFields[i].Animals.Count} animals)");
-                    j++;
+                    OpenGrazingFields.Add(grazingField);
                 }
+            }
+
+            for (int i = 0; i < OpenGrazingFields.Count; i++)
+            {
+                Console.WriteLine($"{i + 1}. Grazing Field ({OpenGrazingFields[i].Animals.Count} animals - {OpenGrazingFields[i].Cows()} cow, {OpenGrazingFields[i].Pigs()} pig, {OpenGrazingFields[i].Goats()} goat, {OpenGrazingFields[i].Ostriches()} ostrich, {OpenGrazingFields[i].Sheep()} sheep) ");
             }
 
             Console.WriteLine();
@@ -32,17 +38,15 @@ namespace Trestlebridge.Actions
 
             try
             {
-                if (farm.GrazingFields[choice - 1].Animals.Count < farm.GrazingFields[choice - 1].Capacity)
+                if (OpenGrazingFields[choice - 1].Animals.Count < OpenGrazingFields[choice - 1].Capacity)
                 {
-                    farm.GrazingFields[choice - 1].AddResource(animal);
+                    OpenGrazingFields[choice - 1].AddResource(animal);
                 }
             }
             catch (ArgumentOutOfRangeException)
             {
                 Console.WriteLine($"{choice} is not a valid option");
             }
-
-
 
             /*
                 Couldn't get this to work. Can you?
