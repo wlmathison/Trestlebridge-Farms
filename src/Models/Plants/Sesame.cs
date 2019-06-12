@@ -5,10 +5,10 @@ namespace Trestlebridge.Models.Plants
 {
     public class Sesame : IResource, ISeedProducing
     {
-        private int _seedsProduced = 40;
+        private int _seedsProduced = 520;
         public string Type { get; } = "Sesame";
 
-        public double Harvest () {
+        public int Harvest () {
             return _seedsProduced;
         }
 
