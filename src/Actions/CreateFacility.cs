@@ -27,6 +27,10 @@ namespace Trestlebridge.Actions
                     farm.AddGrazingField(new GrazingField());
                     Console.WriteLine("A new grazing field has been created!");
                     break;
+                case 2:
+                    farm.AddPlowedField(new PlowedField());
+                    Console.WriteLine("A new plowed field has been created!");
+                    break;
                 case 3:
                     farm.AddNaturalField(new NaturalField());
                     Console.WriteLine("A new natural field has been created!");
